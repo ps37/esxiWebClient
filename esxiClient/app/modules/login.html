@@ -1,0 +1,28 @@
+
+<div id="loginView" class="container">
+    <header class="page-header clearfix">
+        <h4>Enter the details of the host you want to connect to.</h4>
+    </header>
+
+    <!--alert for error message-->
+    <div class="alert alert-danger" id="alert"> {{loginCtrl.errorMessage}}</div>
+
+    <form class="session" role="form" name="loginForm">
+        <div class="form-group">
+            <input name="hostname" type="text" size="48" class="form-control" placeholder="Service Hostname"
+                   ng-model="loginCtrl.hostName">
+        </div>
+        <div class="form-group">
+            <input name="username" type="text" size="16"
+                   class="form-control" placeholder="Username" ng-model="loginCtrl.userName">
+        </div>
+        <div class="form-group">
+            <input name="password" type="password" size="16"
+                   class="form-control" placeholder="Password" ng-model="loginCtrl.password">
+        </div>
+        <div>
+            <button id="loginButton" class="btn btn-primary" ng-click="loginCtrl.submitForm()">Login</button>
+        </div>
+        <!--<toggle-login id="loginButton" ng-click="loginCtrl.submitForm()"></toggle-login>-->
+    </form>
+</div>

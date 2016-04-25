@@ -1,0 +1,39 @@
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" class="col-lg-3 col-md-3 col-sm-3">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a>Inventory</a>
+            </li>
+            <li ng-click="inventoryCtrl.showVirtualMachines()">
+                <a>Virtual Machines Deployed</a>
+            </li>
+            <li ng-click="inventoryCtrl.showDataStores()">
+                <a>Datastores Available</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <div id="page-content-wrapper" class="col-lg-8 col-md-8 col-sm-8">
+        <div id="vmContainer" ng-show="inventoryCtrl.showVms">
+            <div class="resource col-lg-4 col-md-4 col-sm-4" ng-repeat="virtualMachine in inventoryCtrl.virtualMachines track by $index">
+                <h4>{{virtualMachine.obj.type}} : {{$index + 1}}</h4>
+                <strong>OS running: </strong><span> {{virtualMachine.propSet[0].val}} </span>
+            </div>
+        </div>
+        <div id="dsContainer" ng-show="inventoryCtrl.showDs">
+            <div class="resource col-lg-4 col-md-4 col-sm-4" ng-repeat="dataStore in inventoryCtrl.dataStores track by $index">
+                <h4>{{dataStore.obj.type}} : {{$index + 1}}</h4>
+                <strong>Name: </strong><span> {{dataStore.obj.value}} </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-1 col-md-1 col-sm-1" style="padding: 15px">
+        <button class="pull-right btn btn-primary" ng-click="inventoryCtrl.logout()">Logout</button>
+    </div>
+
+
+</div>
+<!-- /#wrapper -->
