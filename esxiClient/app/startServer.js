@@ -48,4 +48,4 @@ let options = {
 
 https.createServer(options, app).listen(4443);
 
-console.log("The sample is now available at https://localhost:4443");
+console.log("The app is now available at https://localhost:4443");
