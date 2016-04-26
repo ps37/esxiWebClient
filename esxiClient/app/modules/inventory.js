@@ -18,6 +18,7 @@ angular.module('inventory', [])
 
             var inventory = customStorage.getInventory();
             var service = customStorage.getService();
+            inventoryCtrl.hostName = cookieService.getCookie('hostName')
             inventoryCtrl.virtualMachines = []; inventoryCtrl.dataStores = [];
 
             var resource;
@@ -29,14 +30,12 @@ angular.module('inventory', [])
                     inventoryCtrl.dataStores.push(resource);
             }
 
-            console.log(inventoryCtrl.virtualMachines, inventoryCtrl.dataStores)
-
-            inventoryCtrl.showVms = false; inventoryCtrl.showDs = false;
+            inventoryCtrl.showVms = true;
             inventoryCtrl.showVirtualMachines = function(){
-                inventoryCtrl.showVms = true; inventoryCtrl.showDs = false;
+                inventoryCtrl.showVms = true;
             };
             inventoryCtrl.showDataStores = function(){
-                inventoryCtrl.showVms = false; inventoryCtrl.showDs = true;
+                inventoryCtrl.showVms = false;
             };
 
             inventoryCtrl.logout = function(){

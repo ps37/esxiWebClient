@@ -35,40 +35,42 @@ angular.module('esxiWebClientApp.services', [])
     this.getService = function(){
         return theVimService;
     };
-}]);
-//.service('loginService', [ function(){
-//        this.authenticate = function(hostname, username, password){
-//            var service, serviceOptions = {proxy: true};
-//            var returnObj = {
-//                errorsFound: true,
-//                errorMessage: ""
-//            };
-//            return vsphere.vimService(hostname, serviceOptions)
-//                //this first promise is to get the vimservice from the library
-//                .then(
-//                //when vim sucesfully fetched
-//                function(vimService) {
-//                    service = vimService;
-//                    console.log(username, password, service, service.serviceContent.sessionManager);
-//                    service.vimPort.login(service.serviceContent.sessionManager, username, password)
-//                        .then(
-//                        //when login is successful
-//                        function(data) {
-//                            //returnObj.errorsFound = false;
-//                            return data;
-//                        },
-//                        //when login failed
-//                        function(err) {
-//                            //returnObj.errorsFound = true;
-//                            //returnObj.errorMessage = err.message;
-//                            return err;
-//                        });
-//                },
-//                //when fetching the vim failed
-//                function(err) {
-//                    //returnObj.errorsFound = true;
-//                    //returnObj.errorMessage = err.message;
-//                    return err;
-//                });
-//        }
-//    }]);
+}])
+
+.service('fetchInventory', ['$state','customStorage', function($state, customStorage){
+
+        this.display = function(service){
+            var propertyCollector = service.serviceContent.propertyCollector;
+            var rootFolder = service.serviceContent.rootFolder;
+            var viewManager = service.serviceContent.viewManager;
+            var type = "ManagedEntity";
+
+            return service.vimPort.createContainerView(viewManager, rootFolder, [type], true)
+                .then(function (containerView) {
+                    return service.vimPort.retrievePropertiesEx(propertyCollector, [
+                        service.vim.PropertyFilterSpec({
+                            objectSet: service.vim.ObjectSpec({
+                                obj: containerView,
+                                skip: true,
+                                selectSet: service.vim.TraversalSpec({
+                                    path: "view",
+                                    type: "ContainerView"
+                                })
+                            }),
+                            propSet: service.vim.PropertySpec({
+                                type: type,
+                                pathSet: ["name"]
+                            })
+                        })
+                    ], service.vim.RetrieveOptions());
+                })
+                .then(function (result) {
+                    customStorage.setService(service);
+                    customStorage.setInventory(result.objects);
+
+                    $state.go('inventory');
+
+                });
+        };
+
+    }]);
