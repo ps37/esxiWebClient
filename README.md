@@ -12,6 +12,7 @@
 -After opening the app in the browser, login by entering the login credentials to connect to the ESXi host.
 
 **Comments on my progress of the project:
+
 --I successfully completed the first 2 parts of the assignment.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
