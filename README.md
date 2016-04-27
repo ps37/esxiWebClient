@@ -1,16 +1,17 @@
 # esxiWebClient
+-The Views(HTML) and Controllers(.JS) files are in the '../esxiClient/app/modules' directory and services are in '../esxiClient/app/services' directory.
 
-Clone the above repo 'esxiWebClient' and go into '../esxiClient/app' directory path and use the following command to start the server.
+-Clone the above repo 'esxiWebClient' and go into '../esxiClient/app' directory path and use the following command to start the server.
 
 'NODE_TLS_REJECT_UNAUTHORIZED=0 babel-node startServer.js'
 
-The app will be available at the url: https://localhost:4443
+-The app will be available at the url: https://localhost:4443
 
-Before openening the app in the browser, start a ESXi host to connect to.
+-Before openening the app in the browser, start a ESXi host to connect to.
 
-After opening the app in the browser, login by entering the login credentials to connect to the ESXi host.
+-After opening the app in the browser, login by entering the login credentials to connect to the ESXi host.
 
-Comments on my progress of the project:
+**Comments on my progress of the project:
 --I successfully completed the first 2 parts of the assignment.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
