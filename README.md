@@ -11,8 +11,8 @@ Before openening the app in the browser, start a ESXi host to connect to.
 After opening the app in the browser, login by entering the login credentials to connect to the ESXi host.
 
 Comments on my progress of the project:
-
 --I successfully completed the first 2 parts of the assignment.
+
 -----------------------------------------------------------------------------------------------------------------------------------------
 --For the 3rd part, In order to toggle the SSH, after contemplating multiple approaches, I decided to take the following approach:
 
