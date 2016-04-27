@@ -21,4 +21,4 @@ I decided to toggle the Firewall rule corresponding to SSH. And once I decided o
 After struggling with this, I found that, in order to change the fire wall rule set, I have to play with the Data Object "HostFirewallConfigRuleSetConfig = {enabled: boolean, rulesetId: sshServer}" in which I have to toggle the 'enabled' property upon button toggling on the UI.
 
 The hierarchy of the above data object is as follows:
-This Data Object is a property of HostFirewallConfig(Data Object) property of--> HostConfigSpec(Data Object) property of--> ApplyHostConfig_Task Method of ----> HostProfileManager(Managed Object) property of --> ServiceContent(Data Object) returned by --> RetrieveServiceContent as vimPort.retrieveServiceContent(serviceInstance)
+This Data Object is a property of HostFirewallConfig(Data Object) property of--> HostConfigSpec(Data Object) property of--> ApplyHostConfig_Task Method of ----> HostProfileManager(Managed Object) property of --> ServiceContent(Data Object) returned by --> RetrieveServiceContent as vimPort.retrieveServiceContent(serviceInstance) inside the vSphere.js library file.
