@@ -24,3 +24,5 @@ After struggling with this, I found that, in order to change the fire wall rule 
 
 The hierarchy of the above data object is as follows:
 This Data Object is a property of HostFirewallConfig(Data Object) property of--> HostConfigSpec(Data Object) property of--> ApplyHostConfig_Task Method of ----> HostProfileManager(Managed Object) property of --> ServiceContent(Data Object) returned by --> RetrieveServiceContent as vimPort.retrieveServiceContent(serviceInstance) inside the vSphere.js library file.
+
+Right now i am stuck at creating ManagedObjectReference to HostProfileManager(Managed Object).
