@@ -25,4 +25,14 @@ After struggling with this, I found that, in order to change the fire wall rule 
 The hierarchy of the above data object is as follows:
 This Data Object is a property of HostFirewallConfig(Data Object) property of--> HostConfigSpec(Data Object) property of--> ApplyHostConfig_Task Method of ----> HostProfileManager(Managed Object) property of --> ServiceContent(Data Object) returned by --> RetrieveServiceContent as vimPort.retrieveServiceContent(serviceInstance) inside the vSphere.js library file.
 
-Right now i am stuck at creating ManagedObjectReference to HostProfileManager(Managed Object).
+s of April 29th 2016, am stuck at creating ManagedObjectReference to HostProfileManager(Managed Object). I need this to get 'HostProfileManager' from the service content. So, I have to cross this hurdle to proceed furthur in my approach.
+
+What I am planning to do after that is:
+
+var hostProfileManager = vimservice.serviceContent.hostProfileManager;
+return service.vimPort.applyHostConfigTask(hostProfileManager, MOR to HostSystem, HostConfigSpec)
+          .then(function(data){
+            //I have to explore the data obtained from this promise to proceed furthur from here.
+          });
+
+
